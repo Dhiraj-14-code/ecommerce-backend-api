@@ -1,7 +1,5 @@
-package com.dhiraj.ecommerce.entity;
+package com.dhiraj.ecommerce.dto;
 
-
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
@@ -14,25 +12,21 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-@Entity
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+public class ProductRequestDTO {
+    //Request DTO
+    //→ validates client input
+    @NotBlank
     private String name;
 
     private String description;
 
-
+    @PositiveOrZero
     private BigDecimal price;
 
+    @PositiveOrZero
     private int stock;
 
-    @ManyToOne //Many products belong to one category
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private Long categoryId;
 
 
 }
