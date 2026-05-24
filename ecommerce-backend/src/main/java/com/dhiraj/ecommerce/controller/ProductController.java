@@ -5,7 +5,7 @@ import com.dhiraj.ecommerce.dto.ProductRequestDTO;
 import com.dhiraj.ecommerce.dto.ProductResponseDTO;
 import com.dhiraj.ecommerce.service.ProductService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
+import org.springframework.http.HttpStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,7 @@ public class ProductController {
     public ResponseEntity<ProductResponseDTO> createProduct(
            @Valid @RequestBody  ProductRequestDTO dto
             ){
-        return ResponseEntity.ok(
+        return ResponseEntity.status(HttpStatus.CREATED).body(
                 productService.createProduct(dto)
         );
     }

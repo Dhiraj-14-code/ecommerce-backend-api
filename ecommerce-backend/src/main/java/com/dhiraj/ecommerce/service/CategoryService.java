@@ -3,7 +3,7 @@ package com.dhiraj.ecommerce.service;
 import com.dhiraj.ecommerce.dto.CategoryRequestDTO;
 import com.dhiraj.ecommerce.dto.CategoryResponseDTO;
 import com.dhiraj.ecommerce.entity.Category;
-import com.dhiraj.ecommerce.exception.ProductNotFoundException;
+import com.dhiraj.ecommerce.exception.CategoryNotFoundException;
 import com.dhiraj.ecommerce.repository.CategoryRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -76,7 +76,7 @@ public class CategoryService {
         // ID se category find ki
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Category Not Found!")
+                        new CategoryNotFoundException("Category not found")
                 );
 
         // Response DTO create kiya
@@ -97,7 +97,7 @@ public class CategoryService {
         // Existing category fetch ki
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Category Not Found!")
+                        new CategoryNotFoundException("Category not found")
                 );
 
         // Updated value set ki
@@ -121,7 +121,7 @@ public class CategoryService {
         // Category find ki
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Category Not Found!")
+                        new CategoryNotFoundException("Category not found")
                 );
 
         // Delete ki

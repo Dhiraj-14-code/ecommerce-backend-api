@@ -4,6 +4,7 @@ import com.dhiraj.ecommerce.dto.ProductRequestDTO;
 import com.dhiraj.ecommerce.dto.ProductResponseDTO;
 import com.dhiraj.ecommerce.entity.Category;
 import com.dhiraj.ecommerce.entity.Product;
+import com.dhiraj.ecommerce.exception.CategoryNotFoundException;
 import com.dhiraj.ecommerce.exception.ProductNotFoundException;
 import com.dhiraj.ecommerce.repository.CategoryRepository;
 import com.dhiraj.ecommerce.repository.ProductRepository;
@@ -47,7 +48,7 @@ public class ProductService {
         // Category database se fetch ki
         Category category = categoryRepository.findById(dto.getCategoryId())
                 .orElseThrow(() ->
-                        new RuntimeException("Category not found"));
+                        new CategoryNotFoundException("Category not found"));
 
         // Product me category set ki
         product.setCategory(category);

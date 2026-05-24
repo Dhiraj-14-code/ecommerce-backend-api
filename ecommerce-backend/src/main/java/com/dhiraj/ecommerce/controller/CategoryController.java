@@ -5,6 +5,7 @@ import com.dhiraj.ecommerce.dto.CategoryResponseDTO;
 import com.dhiraj.ecommerce.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class CategoryController {
             @Valid @RequestBody CategoryRequestDTO dto
     ) {
 
-        return ResponseEntity.ok(
+        return ResponseEntity.status(HttpStatus.CREATED).body(
                 categoryService.createCategory(dto)
         );
     }
