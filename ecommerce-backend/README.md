@@ -51,3 +51,13 @@ Seeded on startup (if not already present):
   - `message`
   - `path`
   - `errors` (validation only)
+
+## Quick Deployment
+The simplest free setup is Railway:
+1. Push this repo to GitHub.
+2. Create a Railway project.
+3. Add a MySQL database service.
+4. Deploy the Spring Boot app from the same repo.
+5. Set `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD`, and `JWT_SECRET` in the app service.
+
+The app now reads the database URL and port from environment variables, so it works without changing code again.

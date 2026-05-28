@@ -29,10 +29,11 @@ public class SecurityConfig {
                                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized")
                 ))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/index.html", "/styles.css", "/app.js", "/favicon.ico").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
 
                         .requestMatchers(HttpMethod.GET, "/api/products/**", "/api/categories/**")
-                        .hasAnyRole("USER", "ADMIN")
+                        .permitAll()
 
                         .requestMatchers(HttpMethod.POST, "/api/products/**", "/api/categories/**")
                         .hasRole("ADMIN")

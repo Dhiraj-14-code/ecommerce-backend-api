@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -28,6 +29,34 @@ public class ProductController {
                 productService.createProduct(dto)
         );
     }
+
+    @PostMapping("/bulk")
+    public ResponseEntity<List<ProductResponseDTO>> createProductsBulk(
+            @RequestBody List<@Valid ProductRequestDTO> dtos
+    ) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                productService.createProductsBulk(dtos)
+        );
+    }
+
+    @PostMapping("/upload-csv")
+    public ResponseEntity<List<ProductResponseDTO>> uploadProductsCsv(
+            @RequestParam("file") MultipartFile file
+    ) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                productService.importProductsFromCsv(file)
+        );
+    }
+
+    @PostMapping("/upload-dataset")
+    public ResponseEntity<List<ProductResponseDTO>> uploadProductsDataset(
+            @RequestParam("file") MultipartFile file
+    ) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                productService.importProductsFromDataset(file)
+        );
+    }
+
     @GetMapping
     public ResponseEntity<List<ProductResponseDTO>> getAllProducts(
 

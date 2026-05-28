@@ -21,7 +21,13 @@ public class ProductResponseDTO { // Response does not need validation
 
     private String description;
 
+    private String imageUrl;
+
     private BigDecimal price;
 
     private int stock;
+
+    private Long categoryId;
+
+    private String categoryName;
 }

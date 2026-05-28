@@ -12,6 +12,8 @@ sorting, filtering, search APIs, exception handling, and entity relationships.
 
 ## ✅ Product Management
 - Create Product
+- Bulk Create Products
+- CSV / JSON Dataset Import
 - Get All Products
 - Get Product By ID
 - Update Product
@@ -99,6 +101,9 @@ MySQL
 | Method | Endpoint             | Description       |
 | ------ | -------------------- | ----------------- |
 | POST   | `/api/products`      | Create Product    |
+| POST   | `/api/products/bulk` | Bulk Create Products from JSON array |
+| POST   | `/api/products/upload-csv` | Upload Products from CSV file |
+| POST   | `/api/products/upload-dataset` | Auto-detect and import CSV datasets |
 | GET    | `/api/products`      | Get All Products  |
 | GET    | `/api/products/{id}` | Get Product By ID |
 | PUT    | `/api/products/{id}` | Update Product    |

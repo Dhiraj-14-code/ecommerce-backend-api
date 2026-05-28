@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-soft: #edf2f7;
+  --foreground: #0f172a;
+  --muted: #5b6472;
+  --border: #d9e1ea;
+  --accent: #145fff;
+  --accent-soft: rgba(20, 95, 255, 0.1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #07111d;
+  --surface: #0b1220;
+  --surface-soft: #111827;
+  --foreground: #f8fafc;
+  --muted: #9ca3af;
+  --border: #243244;
+  --accent: #6aa7ff;
+  --accent-soft: rgba(106, 167, 255, 0.14);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--bg);
+    color: var(--foreground);
+    font-family: "Inter", system-ui, sans-serif;
+    transition:
+      background-color 200ms ease,
+      color 200ms ease;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: rgba(20, 95, 255, 0.2);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .page-enter {
+    animation: page-enter 220ms ease-out;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

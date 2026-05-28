@@ -24,14 +24,15 @@ class EcommerceBackendApplicationTests {
 	}
 
 	@Test
-	void productsWithoutTokenShouldReturnUnauthorized() throws Exception {
+	void productsWithoutTokenShouldBePublic() throws Exception {
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create("http://localhost:" + port + "/api/products?page=0&size=5&sortBy=id&sortDir=asc"))
 				.GET()
 				.build();
 
 		HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-		assertThat(response.statusCode()).isEqualTo(401);
+		assertThat(response.statusCode()).isEqualTo(200);
+		assertThat(response.body()).startsWith("[");
 	}
 
 	@Test

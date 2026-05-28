@@ -21,9 +21,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(length = 500)
     private String name;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column(length = 1000)
+    private String imageUrl;
 
 
     private BigDecimal price;

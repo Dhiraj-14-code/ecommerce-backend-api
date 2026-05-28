@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-mark">N</div>
+      <div>
+        <div class="brand">NovaCart</div>
+        <div class="subbrand">Commerce Workspace</div>
+      </div>
+    </div>
+    <div class="actions">
+      <button id="cartBtn" class="btn">Cart</button>
+      <button id="ordersBtn" class="btn">Orders</button>
+      <button id="logoutBtn" class="btn danger">Logout</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel auth" id="authPanel">
+      <h2>Welcome Back</h2>
+      <div class="row">
+        <input id="loginEmail" placeholder="Email">
+        <input id="loginPassword" type="password" placeholder="Password">
+      </div>
+      <button id="loginBtn" class="btn primary">Login</button>
+      <h3>Create Account</h3>
+      <div class="row">
+        <input id="regName" placeholder="Name">
+        <input id="regEmail" placeholder="Email">
+        <input id="regPassword" type="password" placeholder="Password">
+      </div>
+      <button id="registerBtn" class="btn">Register</button>
+      <p class="hint">Default admin: admin@test.com / admin123</p>
+    </section>
+
+    <section class="panel products">
+      <div class="section-head">
+        <h2>Products</h2>
+        <div class="inline">
+          <input id="searchInput" placeholder="Search product">
+          <button id="searchBtn" class="btn">Search</button>
+          <button id="refreshBtn" class="btn">Refresh</button>
+        </div>
+      </div>
+      <div id="adminBlock" class="admin hidden">
+        <h3>Add Product (Admin)</h3>
+        <div class="row">
+          <input id="pName" placeholder="Name">
+          <input id="pDescription" placeholder="Description">
+          <input id="pPrice" type="number" placeholder="Price">
+          <input id="pStock" type="number" placeholder="Stock">
+          <select id="pCategoryId">
+            <option value="">Select category</option>
+          </select>
+        </div>
+        <button id="createProductBtn" class="btn primary">Create Product</button>
+
+        <h3 style="margin-top: 20px;">Bulk Import</h3>
+        <div class="row">
+          <textarea id="bulkJsonInput" rows="6" placeholder='Paste JSON array, for example:
+[{"name":"Wireless Mouse","description":"Compact mouse","price":499,"stock":25,"categoryId":1}]'></textarea>
+        </div>
+        <div class="row">
+          <input id="bulkCsvInput" type="file" accept=".csv,text/csv">
+        </div>
+        <div class="inline">
+          <button id="bulkJsonBtn" class="btn">Import JSON</button>
+          <button id="bulkCsvBtn" class="btn">Upload CSV</button>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+          <input id="bulkDatasetInput" type="file" accept=".csv,text/csv">
+        </div>
+        <button id="bulkDatasetBtn" class="btn primary" style="margin-top: 10px;">Auto Import Dataset</button>
+        <p class="hint">CSV datasets are auto-mapped. Jupyter notebook files (`.ipynb`) should be exported to CSV first.</p>
+      </div>
+      <div id="productsGrid" class="grid"></div>
+    </section>
+
+    <section class="panel cart hidden" id="cartPanel">
+      <div class="section-head">
+        <h2>My Cart</h2>
+        <button id="placeOrderBtn" class="btn primary">Place Order</button>
+      </div>
+      <div id="cartItems"></div>
+      <div id="cartTotal" class="total"></div>
+    </section>
+
+    <section class="panel orders hidden" id="ordersPanel">
+      <h2>My Orders</h2>
+      <div id="ordersList"></div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
